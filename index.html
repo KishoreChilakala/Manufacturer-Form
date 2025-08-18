@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturer Form - DAY-01</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #FFFDD0;
+      margin: 20px;
+      color: #333;
+    }
+    form {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    fieldset {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 15px;
+    }
+    legend {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 0.9rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    input[type="checkbox"], input[type="radio"], input[type="file"] {
+      width: auto;
+      margin-right: 10px;
+    }
+    .required::after {
+      content: " *";
+      color: red;
+    }
+    button {
+      background: #3498db;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .declaration {
+      display: flex;
+      align-items: center;
+    }
+    .declaration label {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      input, select, textarea {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form id="manufacturerForm">
+    <!-- Manufacturer Info -->
+    <fieldset>
+      <legend>Manufacturer Information</legend>
+      <label class="required">Manufacturer Name</label>
+      <input type="text" name="manufacturerName" required>
+
+      <label class="required">Contact Person</label>
+      <input type="text" name="contactPerson" required>
+
+      <label class="required">Email</label>
+      <input type="email" name="email" required>
+
+      <label class="required">Phone</label>
+      <input type="tel" name="phone" pattern="[0-9]{10}" required placeholder="10 digit number">
+    </fieldset>
+
+    <!-- Production Info -->
+    <fieldset>
+      <legend>Production Information</legend>
+      <label class="required">Location</label>
+      <input type="text" name="location" required>
+
+      <label class="required">Batch/Lot Number</label>
+      <input type="text" name="batchNumber" required>
+
+      <label class="required">Production Date</label>
+      <input type="date" name="productionDate" required>
+    </fieldset>
+
+    <!-- Product Info -->
+    <fieldset>
+      <legend>Product Information</legend>
+      <label class="required">Product ID</label>
+      <input type="text" name="productId" required>
+
+      <label class="required">Product Name</label>
+      <input type="text" name="productName" required>
+
+      <label>Size Range</label>
+      <input type="text" name="sizeRange">
+
+      <label>Colors Produced</label>
+      <input type="text" name="colorsProduced">
+
+      <label class="required">Quantity Produced</label>
+      <input type="number" name="quantityProduced" min="1" required>
+    </fieldset>
+
+    <!-- Materials Used -->
+    <fieldset>
+      <legend>Materials Used</legend>
+      <label class="required">Fabric Type</label>
+      <input type="text" name="fabricType" required>
+
+      <label class="required">Percentage Composition</label>
+      <input type="text" name="composition" required>
+
+      <label>Trims</label>
+      <input type="text" name="trims">
+
+      <label>Dyes</label>
+      <input type="text" name="dyes">
+    </fieldset>
+
+    <!-- Compliance -->
+    <fieldset>
+      <legend>Compliance / Standards</legend>
+      <label><input type="checkbox" name="certifications" value="organic"> Organic</label>
+      <label><input type="checkbox" name="certifications" value="sustainable"> Sustainable</label>
+      <label><input type="checkbox" name="certifications" value="fairtrade"> Fair Trade</label>
+    </fieldset>
+
+    <!-- Quality Checks -->
+    <fieldset>
+      <legend>Quality Checks</legend>
+      <label>Defects Count</label>
+      <input type="number" name="defectsCount" min="0">
+
+      <label>Passed Checks</label>
+      <input type="number" name="passedChecks" min="0">
+
+      <label>Remarks</label>
+      <textarea name="remarks"></textarea>
+    </fieldset>
+
+    <!-- Delivery Info -->
+    <fieldset>
+      <legend>Delivery Information</legend>
+      <label class="required">Dispatch Date</label>
+      <input type="date" name="dispatchDate" required>
+
+      <label class="required">Delivery Date</label>
+      <input type="date" name="deliveryDate" required>
+
+      <label>Transport Partner</label>
+      <input type="text" name="transportPartner">
+
+      <label>Delivery Status</label>
+      <select name="deliveryStatus">
+        <option value="pending">Pending</option>
+        <option value="inTransit">In Transit</option>
+        <option value="delivered">Delivered</option>
+      </select>
+    </fieldset>
+
+    <!-- Uploads -->
+    <fieldset>
+      <legend>Uploads</legend>
+      <label class="required">Upload Documents (PDF/Images)</label>
+      <input type="file" name="uploads" accept=".pdf,image/*" multiple required>
+    </fieldset>
+
+    <!-- Declaration -->
+    <fieldset>
+      <legend>Declaration</legend>
+      <div class="declaration">
+        <input type="checkbox" name="declaration" required>
+        <label class="required">I confirm that the information provided is correct.</label>
+      </div>
+    </fieldset>
+
+    <!-- Digital Signature -->
+    <fieldset>
+      <legend>Digital Signature</legend>
+      <label>Type Your Name</label>
+      <input type="text" name="digitalSignature">
+
+      <label>Or Upload Signature Image</label>
+      <input type="file" name="signatureImage" accept="image/*">
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("manufacturerForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent real submission
+
+      if (this.checkValidity()) {
+        alert("Form validated successfully. ✅\nData captured for review.");
+      } else {
+        alert("⚠ Please fill out all required fields correctly.");
+      }
+    });
+  </script>
+</body>
+</html>
